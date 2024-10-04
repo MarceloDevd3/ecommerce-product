@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetarDado } from '../dadoSlice';
+import { resetarDado, visibilityOff  } from '../dadoSlice';
 
 // icons and imgs
 import menuIcon from './images/icon-menu.svg';
@@ -70,9 +70,9 @@ export default function NavBar() {
 
             {dado.valor == 0 || dado.valor < 0 ?
               <div></div> :
-              <div className='red-bubble'>{dado.valor}</div>}
+              <div className={dado.VisibilityItem ? "red-bubble": "red-bubble off"}>{dado.valor}</div>}
             <img onClick={cartArticle} src={cart} alt="cart-icon" />
-            
+
             <article className={cartBar ? "cart-add active" : "cart-add"}>
               <h3 id="cart-title">Cart</h3>
               <hr></hr>
@@ -81,7 +81,7 @@ export default function NavBar() {
                   <p className='op-text'>Your cart is empaty</p>
                 </div> :
                 <div className='full-card'>
-                  <article className='cart-container'>
+                  <article className={dado.VisibilityItem ? 'cart-container' : 'cart-container off'}>
                     <div className='card-img'>
                       <img src={ProductImg1} alt="product image" id="card-img" />
                     </div>
@@ -89,7 +89,10 @@ export default function NavBar() {
                       <h4>Fall Limited Edition Sneakers</h4>
                       <p><span className='full-price'>125.00 x {dado.valor} </span>   <strong>${checkoutCart}</strong></p>
                     </div>
-                    <button id="trash" onClick={() => dispatch(resetarDado())}><img src={trash} /> </button>
+                    <button id="trash" onClick={() => {
+                      dispatch(resetarDado())
+                      dispatch(visibilityOff()) // Chame sua segunda função aqui
+                    }}><img src={trash} /> </button>
                   </article>
                   <button id="checkout-cart">checkout</button>
                 </div>

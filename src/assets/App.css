@@ -215,16 +215,9 @@ header {
     left: 10px;
 }
 
-
-/*
-#right-btn {
-    position:absolute;
-    top: 0;
-    right: -324px;
-    width: 50px;
+.red-bubble.off {
+    display: none;
 }
-*/
-
 
 /*Slide info*/
 
@@ -298,7 +291,7 @@ header {
     display: none;
     position: absolute;
     left:-17em !important;
-    top: 45%;
+    top:4em;
     width: 345px;
     background-color: var(--White);
     height: 300px;
@@ -400,6 +393,10 @@ header {
     padding: 0 1em;
     margin-top: 14%;
     margin-bottom: 1em;
+}
+
+.cart-container.off {
+    display: none;
 }
 
 #checkout-cart {

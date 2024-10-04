@@ -4,7 +4,8 @@ export const dadoSlice = createSlice({
     name: 'dado',
     initialState: {
       valor: 0,
-      slide: false
+      slide: false,
+      VisibilityItem: false
     },
     reducers: {
       resetarDado : (state) => {
@@ -19,9 +20,18 @@ export const dadoSlice = createSlice({
       open: (state) => {
         state.slide = !state.slide
       }
+      ,
+      visibilityOn : (state) =>  {
+        state.VisibilityItem = true
+      },
+
+      visibilityOff : (state) =>  {
+        state.VisibilityItem = false
+      }
     }
 })
 
 
-export const {resetarDado, add, remove, open} = dadoSlice.actions;
+export const {resetarDado, add, remove, open, visibilityOn , 
+  visibilityOff } = dadoSlice.actions;
 export default dadoSlice.reducer
